@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ماشاءاللہ گیٹ اینڈ گرِل اسٹور</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Cairo:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dark: #9B7A2F;
+      --green-wa: #25D366;
+      --font-urdu: 'Noto Nastaliq Urdu', serif;
+      --font-latin: 'Cairo', sans-serif;
+      --transition: all 0.35s ease;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0F1822;
+      --bg-secondary: #1A2332;
+      --bg-card: #212f42;
+      --bg-card-hover: #263650;
+      --text-primary: #F0EEE8;
+      --text-secondary: rgba(240, 238, 232, 0.6);
+      --text-muted: rgba(240, 238, 232, 0.4);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(201, 168, 76, 0.35);
+      --nav-bg: rgba(15, 24, 34, 0.97);
+      --section-alt: #141e2b;
+      --hero-bg: #0F1822;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #F8F6F0;
+      --bg-secondary: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #F3F0E8;
+      --text-primary: #1A1A1A;
+      --text-secondary: #444444;
+      --text-muted: #888888;
+      --border: rgba(0, 0, 0, 0.07);
+      --border-hover: rgba(201, 168, 76, 0.4);
+      --nav-bg: rgba(26, 35, 50, 0.97);
+      --section-alt: #FFFFFF;
+      --hero-bg: #1A2332;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-urdu);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    /* THEME TOGGLE */
+    .theme-toggle {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 1001;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-hover);
+      border-right: none;
+      border-radius: 12px 0 0 12px;
+      padding: 10px 10px 10px 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      box-shadow: -3px 0 15px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      padding-left: 18px;
+    }
+
+    .theme-toggle .t-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .theme-toggle .t-label {
+      font-size: 9px;
+      color: var(--text-muted);
+      font-family: var(--font-latin);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: white;
+      font-family: var(--font-latin);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .nav-brand-text {
+      color: #FFFFFF;
+      font-size: 12px;
+      line-height: 1.3;
+      font-family: var(--font-urdu);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 13px;
+      font-family: var(--font-urdu);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #1A2332 !important;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      display: block;
+      transition: all 0.3s;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--hero-bg);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 80px 1.5rem 3rem;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(201, 168, 76, 0.6) 40px, rgba(201, 168, 76, 0.6) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201, 168, 76, 0.6) 40px, rgba(201, 168, 76, 0.6) 41px);
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 820px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201, 168, 76, 0.15);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      color: var(--gold-light);
+      padding: 7px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-urdu);
+    }
+
+    .hero-title {
+      font-family: var(--font-urdu);
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: #FFFFFF;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero-title span {
+      color: var(--gold-light);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+      font-family: var(--font-urdu);
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #1A2332;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: var(--font-urdu);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      text-decoration: none;
+      font-family: var(--font-urdu);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .btn-wa {
+      background: var(--green-wa);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: var(--font-urdu);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-wa:hover {
+      background: #1ebe5a;
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      font-family: var(--font-latin);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 4px;
+      font-family: var(--font-urdu);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      color: var(--gold-dark);
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      margin-bottom: 1rem;
+      font-family: var(--font-urdu);
+    }
+
+    [data-theme="dark"] .section-tag {
+      color: var(--gold-light);
+      background: rgba(201, 168, 76, 0.15);
+      border-color: rgba(201, 168, 76, 0.35);
+    }
+
+    .section-title {
+      font-family: var(--font-urdu);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      font-family: var(--font-urdu);
+      max-width: 600px;
+    }
+
+    /* SERVICES */
+    .services-section {
+      background: var(--bg-secondary);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+      border-radius: 0 14px 14px 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--border-hover);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+
+    .service-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      font-family: var(--font-urdu);
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-family: var(--font-urdu);
+    }
+
+    /* GALLERY */
+    .gallery-section {
+      background: var(--bg-primary);
+    }
+
+    .gallery-filter {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin: 2rem 0 2.5rem;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-family: var(--font-urdu);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--gold);
+      color: #1A2332;
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow);
+      border-color: var(--border-hover);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-label {
+      font-family: var(--font-urdu);
+      font-size: 13px;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* GALLERY LARGE ITEM */
+    .gallery-item.large {
+      grid-column: span 2;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      font-size: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* WHY US */
+    .why-section {
+      background: #1A2332;
+    }
+
+    .why-section .section-title {
+      color: #FFFFFF;
+    }
+
+    .why-section .section-desc {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .why-section .section-tag {
+      background: rgba(201, 168, 76, 0.2);
+      border-color: rgba(201, 168, 76, 0.4);
+      color: var(--gold-light);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .why-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1.75rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .why-card:hover {
+      background: rgba(201, 168, 76, 0.1);
+      border-color: rgba(201, 168, 76, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .why-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .why-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+      font-family: var(--font-urdu);
+    }
+
+    .why-text {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.7;
+      font-family: var(--font-urdu);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section {
+      background: var(--bg-secondary);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--border-hover);
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 5rem;
+      color: rgba(201, 168, 76, 0.1);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+      direction: ltr;
+    }
+
+    .star {
+      color: var(--gold);
+      font-size: 16px;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-family: var(--font-urdu);
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: var(--font-urdu);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: var(--font-urdu);
+    }
+
+    .author-city {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-urdu);
+    }
+
+    /* HOURS */
+    .hours-section {
+      background: var(--bg-primary);
+    }
+
+    .hours-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .hours-table-wrap {
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .hours-header {
+      background: #1A2332;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hours-header-text {
+      color: var(--gold-light);
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--font-urdu);
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .hours-row:hover {
+      background: rgba(201, 168, 76, 0.04);
+    }
+
+    .hours-row.today {
+      background: rgba(201, 168, 76, 0.08);
+      border-right: 3px solid var(--gold);
+    }
+
+    .day-name {
+      font-size: 0.95rem;
+      font-family: var(--font-urdu);
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .hours-row.today .day-name {
+      color: var(--gold-dark);
+    }
+
+    [data-theme="dark"] .hours-row.today .day-name {
+      color: var(--gold-light);
+    }
+
+    .time-slot {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: var(--font-latin);
+      direction: ltr;
+    }
+
+    .badge-open {
+      background: rgba(37, 211, 102, 0.12);
+      color: #1a9e4d;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-family: var(--font-urdu);
+    }
+
+    .badge-friday {
+      background: rgba(201, 168, 76, 0.12);
+      color: var(--gold-dark);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-family: var(--font-urdu);
+    }
+
+    [data-theme="dark"] .badge-friday {
+      color: var(--gold-light);
+    }
+
+    .info-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .info-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(201, 168, 76, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .info-card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-family: var(--font-latin);
+    }
+
+    .info-card-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-family: var(--font-urdu);
+    }
+
+    .info-card-value a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .info-card-value a:hover {
+      color: var(--gold-dark);
+    }
+
+    /* MAP */
+    .map-section {
+      background: #1A2332;
+      padding: 5rem 1.5rem;
+    }
+
+    .map-section .section-title,
+    .map-section .section-tag {
+      color: #FFFFFF;
+    }
+
+    .map-section .section-tag {
+      background: rgba(201, 168, 76, 0.2);
+      border-color: rgba(201, 168, 76, 0.4);
+      color: var(--gold-light);
+    }
+
+    .map-section .section-desc {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .map-container {
+      margin-top: 2.5rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(201, 168, 76, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 420px;
+      border: none;
+      display: block;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--bg-primary);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--border-hover);
+    }
+
+    .contact-card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .contact-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-family: var(--font-urdu);
+    }
+
+    .contact-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: var(--font-latin);
+      direction: ltr;
+    }
+
+    .contact-value.urdu-val {
+      font-family: var(--font-urdu);
+      direction: rtl;
+      font-size: 0.9rem;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: var(--font-urdu);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-phone-contact {
+      background: rgba(26, 35, 50, 0.08);
+      color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .btn-phone-contact {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-phone-contact:hover {
+      background: #1A2332;
+      color: white;
+    }
+
+    .btn-wa-contact {
+      background: var(--green-wa);
+      color: white;
+    }
+
+    .btn-wa-contact:hover {
+      background: #1ebe5a;
+    }
+
+    .btn-fb-contact {
+      background: #1877F2;
+      color: white;
+    }
+
+    .btn-fb-contact:hover {
+      background: #0e63d3;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #080e17;
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      font-family: var(--font-urdu);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.35);
+      font-family: var(--font-urdu);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+      margin: 0 auto 1.5rem;
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      font-size: 13px;
+      font-family: var(--font-urdu);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.2);
+      font-family: var(--font-latin);
+    }
+
+    /* FLOAT WA */
+    .float-wa {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 56px;
+      height: 56px;
+      background: var(--green-wa);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      text-decoration: none;
+      transition: all 0.3s;
+      animation: pulse-wa 2.5s infinite;
+    }
+
+    .float-wa:hover {
+      transform: scale(1.1);
+    }
+
+    .float-wa svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+
+    @keyframes pulse-wa {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4)
+      }
+
+      50% {
+        box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7)
+      }
+    }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(15, 24, 34, 0.98);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      z-index: 999;
+      padding: 1.5rem;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 1rem;
+      font-family: var(--font-urdu);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* FADE IN */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item.large {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hours-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .map-container iframe {
+        height: 300px;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      .theme-toggle {
+        top: auto;
+        bottom: 100px;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-primary,
+      .btn-outline,
+      .btn-wa {
+        width: 100%;
+        justify-content: center;
+      }
+
+      section {
+        padding: 3.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- FLOAT WHATSAPP -->
+  <a href="https://wa.me/923026050782?text=السلام علیکم، مجھے آپ کی سروس کے بارے میں معلومات چاہیے" class="float-wa"
+    target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <!-- THEME TOGGLE -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="تھیم بدلیں">
+    <span class="t-icon" id="theme-icon">☀️</span>
+    <span class="t-label" id="theme-label">LIGHT</span>
+  </button>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <div class="nav-logo-icon">M</div>
+      <div class="nav-brand-text">ماشاءاللہ<br>گیٹ اینڈ گرِل اسٹور</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">بارے میں</a></li>
+      <li><a href="#services">خدمات</a></li>
+      <li><a href="#gallery">گیلری</a></li>
+      <li><a href="#reviews">ریویوز</a></li>
+      <li><a href="#hours">اوقات</a></li>
+      <li><a href="#contact" class="nav-cta">رابطہ</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="مینو">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="toggleMenu()">ہمارے بارے میں</a>
+    <a href="#services" onclick="toggleMenu()">خدمات</a>
+    <a href="#gallery" onclick="toggleMenu()">گیلری</a>
+    <a href="#reviews" onclick="toggleMenu()">ریویوز</a>
+    <a href="#hours" onclick="toggleMenu()">اوقات کار</a>
+    <a href="#contact" onclick="toggleMenu()">رابطہ کریں</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-pattern"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⭐ 1990 سے قابل اعتماد خدمات</div>
+      <h1 class="hero-title"><span>ماشاءاللہ</span> گیٹ اینڈ<br>گرِل اسٹور</h1>
+      <p class="hero-subtitle">جدید اور مضبوط گرِل، گیٹس، ونڈوز، دروازے، سیڑھی ریلنگ، شٹر<br>اور آئرن و اسٹیل کے تمام
+        کام بہترین کوالٹی کے ساتھ</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/923026050782?text=السلام علیکم، مجھے آپ کی سروس کے بارے میں معلومات چاہیے"
+          target="_blank" class="btn-wa">💬 واٹس ایپ پر رابطہ</a>
+        <a href="tel:03026050782" class="btn-primary">📞 ابھی کال کریں</a>
+        <a href="#gallery" class="btn-outline">ہماری گیلری دیکھیں</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">35+</div>
+          <div class="stat-label">سال کا تجربہ</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1000+</div>
+          <div class="stat-label">خوش مشتری</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">6</div>
+          <div class="stat-label">قسم کی خدمات</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">7</div>
+          <div class="stat-label">دن کھلا</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;" class="about-grid">
+        <div class="fade-in">
+          <div class="section-tag">🏪 ہمارے بارے میں</div>
+          <h2 class="section-title">معیاری کام، مناسب قیمت</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">ماشاءاللہ گیٹ اینڈ گرِل اسٹور میں ہر قسم کے جدید اور
+            مضبوط گرِل، گیٹس، ونڈوز، دروازے، سیڑھی ریلنگ، شٹر اور آئرن و اسٹیل کے تمام کام بہترین کوالٹی کے ساتھ تیار
+            کیے جاتے ہیں۔</p>
+          <p class="section-desc" style="margin-bottom: 2rem;">ہم خوبصورت ڈیزائن، مضبوط میٹریل اور نفیس فنشنگ کے ذریعے
+            آپ کے گھر، دفتر اور دکان کو ایک نیا اور خوبصورت انداز دیتے ہیں۔ کسٹمر کی پسند کے مطابق کسٹم ڈیزائن بھی تیار
+            کیے جاتے ہیں۔</p>
+          <a href="https://wa.me/923026050782?text=مجھے کسٹم ڈیزائن کے بارے میں معلومات چاہیے" target="_blank"
+            class="btn-wa" style="display: inline-flex;">کسٹم ڈیزائن کا آرڈر دیں</a>
+        </div>
+        <div class="fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div style="background: #1A2332; border-radius: 16px; padding: 1.75rem; text-align: center; color: white;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏠</div>
+            <div style="font-size: 0.9rem; font-family: var(--font-urdu); color: rgba(255,255,255,0.8);">گھر کے لیے
+            </div>
+          </div>
+          <div
+            style="background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); border-radius: 16px; padding: 1.75rem; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏢</div>
+            <div style="font-size: 0.9rem; font-family: var(--font-urdu); color: var(--gold-dark);">دفتر کے لیے</div>
+          </div>
+          <div
+            style="background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); border-radius: 16px; padding: 1.75rem; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏪</div>
+            <div style="font-size: 0.9rem; font-family: var(--font-urdu); color: var(--gold-dark);">دکان کے لیے</div>
+          </div>
+          <div style="background: #1A2332; border-radius: 16px; padding: 1.75rem; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚙️</div>
+            <div style="font-size: 0.9rem; font-family: var(--font-urdu); color: rgba(255,255,255,0.8);">کسٹم ڈیزائن
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services-section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 1rem;" class="fade-in">
+        <div class="section-tag" style="justify-content: center; display: inline-flex;">🔧 ہماری خدمات</div>
+        <h2 class="section-title" style="margin-top: 0.5rem;">ہم کیا بناتے ہیں؟</h2>
+        <p class="section-desc" style="margin: 0 auto;">آئرن اور اسٹیل کے تمام کام بہترین معیار اور خوبصورت ڈیزائن کے
+          ساتھ</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">🚪</div>
+          <div class="service-name">گیٹس اور دروازے</div>
+          <div class="service-desc">گھر، دفتر اور فیکٹری کے لیے خوبصورت اور مضبوط لوہے کے گیٹ اور دروازے</div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">🪟</div>
+          <div class="service-name">گرِل اور ونڈوز</div>
+          <div class="service-desc">کھڑکیوں اور روشن دانوں کے لیے خوبصورت ڈیزائن کی گرِل اور پلیٹ ونڈوز</div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">🪜</div>
+          <div class="service-name">سیڑھی ریلنگ</div>
+          <div class="service-desc">گھروں اور عمارتوں کے لیے مضبوط اور خوبصورت آئرن و اسٹیل ریلنگ</div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">🏪</div>
+          <div class="service-name">شٹر</div>
+          <div class="service-desc">دکانوں اور گودام کے لیے مضبوط اور پائیدار رولنگ شٹر</div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">⚙️</div>
+          <div class="service-name">کسٹم آئرن ورک</div>
+          <div class="service-desc">آپ کی پسند کے مطابق خصوصی ڈیزائن اور کسٹم آئرن و اسٹیل کا کام</div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">🔩</div>
+          <div class="service-name">اسٹیل فریم و ریک</div>
+          <div class="service-desc">اسٹیل اور آئرن سے بنے فریم، ریک اور اسٹرکچر</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-tag">📸 ہمارے کام کی جھلکیاں</div>
+        <h2 class="section-title">گیلری</h2>
+        <p class="section-desc">آئرن اور اسٹیل کے خوبصورت کاموں کے نمونے</p>
+      </div>
+
+      <div class="gallery-filter fade-in">
+        <button class="filter-btn active" onclick="filterGallery('all', this)">تمام</button>
+        <button class="filter-btn" onclick="filterGallery('gate', this)">گیٹس</button>
+        <button class="filter-btn" onclick="filterGallery('grill', this)">گرِل</button>
+        <button class="filter-btn" onclick="filterGallery('railing', this)">ریلنگ</button>
+        <button class="filter-btn" onclick="filterGallery('shutter', this)">شٹر</button>
+      </div>
+
+      <div class="gallery-grid fade-in" id="galleryGrid">
+
+        <div class="gallery-item large" data-cat="gate" onclick="openLightbox(this)">
+          <img src="0 (1).jpg" alt="لوہے کا گیٹ" loading="lazy" onerror="this.src='0 (1).jpg'">
+          <div class="gallery-overlay"><span class="gallery-label">🚪 مضبوط آئرن گیٹ</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="grill" onclick="openLightbox(this)">
+          <img src="0 (2).jpg" alt="ونڈو گرِل" loading="lazy" onerror="this.src='0 (2).jpg'">
+          <div class="gallery-overlay"><span class="gallery-label">🪟 ونڈو گرِل ڈیزائن</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="railing" onclick="openLightbox(this)">
+          <img src="0 (3).jpg" alt="سیڑھی ریلنگ" loading="lazy" onerror="this.src='0 (3).jpg'">
+          <div class="gallery-overlay"><span class="gallery-label">🪜 سیڑھی ریلنگ</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="gate" onclick="openLightbox(this)">
+          <img src="0 (4).jpg" alt="گھر کا گیٹ" loading="lazy" onerror="this.src='0 (4).jpg'">
+          <div class="gallery-overlay"><span class="gallery-label">🏠 گھر کا مرکزی گیٹ</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="shutter" onclick="openLightbox(this)">
+          <img src="0 (5).jpg" alt="رولنگ شٹر" loading="lazy" onerror="this.src='0 (5).jpg'">
+          <div class="gallery-overlay"><span class="gallery-label">🏪 رولنگ شٹر</span></div>
+        </div>
+
+        <div class="gallery-item large" data-cat="grill" onclick="openLightbox(this)">
+          <img src="0 (6).jpg" alt="گرِل ڈیزائن" loading="lazy" onerror="this.src='0 (6).jpg'">
+          <div class="gallery-overlay"><span class="gallery-label">✨ خوبصورت گرِل ڈیزائن</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="railing" onclick="openLightbox(this)">
+          <img src="0 (7).jpg" alt="جدید ریلنگ" loading="lazy" onerror="this.src='0 (7).jpg'">
+          <div class="gallery-overlay"><span class="gallery-label">⚡ جدید اسٹیل ریلنگ</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="gate" onclick="openLightbox(this)">
+          <img src="0 (8).jpg" alt="اسٹیل گیٹ" loading="lazy" onerror="this.src='0 (8).jpg'">
+          <div class="gallery-overlay"><span class="gallery-label">🔒 سیکیورٹی گیٹ</span></div>
+        </div>
+
+        <div class="gallery-item" data-cat="grill" onclick="openLightbox(this)">
+          <img src="0 (9).jpg" alt="آئرن گرِل" loading="lazy" onerror="this.src='0 (9).jpg'">
+          <div class="gallery-overlay"><span class="gallery-label">🎨 کسٹم آئرن گرِل</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-section">
+    <div class="container">
+      <div style="text-align: center;" class="fade-in">
+        <div class="section-tag">✨ ہم کیوں؟</div>
+        <h2 class="section-title" style="color:#fff;">ہماری پہچان کیا ہے؟</h2>
+        <p class="section-desc" style="margin: 0 auto;">ہم نے اپنی ساکھ محنت، معیار اور دیانتداری سے بنائی ہے</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card fade-in">
+          <div class="why-icon">💎</div>
+          <div class="why-title">بہترین کوالٹی</div>
+          <div class="why-text">اعلیٰ درجے کا میٹریل اور نفیس فنشنگ</div>
+        </div>
+        <div class="why-card fade-in">
+          <div class="why-icon">💰</div>
+          <div class="why-title">مناسب قیمت</div>
+          <div class="why-text">مارکیٹ کے مقابلے میں منصفانہ ریٹ</div>
+        </div>
+        <div class="why-card fade-in">
+          <div class="why-icon">⏰</div>
+          <div class="why-title">وقت کی پابندی</div>
+          <div class="why-text">طے شدہ وقت پر کام مکمل کرنا ہمارا وعدہ</div>
+        </div>
+        <div class="why-card fade-in">
+          <div class="why-icon">🎨</div>
+          <div class="why-title">کسٹم ڈیزائن</div>
+          <div class="why-text">آپ کی مرضی کے مطابق خصوصی ڈیزائن</div>
+        </div>
+        <div class="why-card fade-in">
+          <div class="why-icon">🏅</div>
+          <div class="why-title">35 سال کا تجربہ</div>
+          <div class="why-text">1990 سے اس شعبے میں قابل اعتماد نام</div>
+        </div>
+        <div class="why-card fade-in">
+          <div class="why-icon">🚚</div>
+          <div class="why-title">ڈیلیوری سروس</div>
+          <div class="why-text">آپ کے گھر تک ڈیلیوری کی سہولت</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="reviews" class="testimonials-section">
+    <div class="container">
+      <div style="text-align: center;" class="fade-in">
+        <div class="section-tag" style="justify-content: center; display: inline-flex;">⭐ گاہکوں کی رائے</div>
+        <h2 class="section-title" style="margin-top: 0.5rem;">ہمارے گاہک کیا کہتے ہیں؟</h2>
+        <p class="section-desc" style="margin: 0 auto;">ہمارے مطمئن گاہکوں کی تعریفیں</p>
+      </div>
+      <div class="testimonials-grid" style="margin-top: 3rem;">
+
+        <div class="testimonial-card fade-in">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">ماشاءاللہ گیٹ اسٹور سے ہم نے اپنے گھر کے لیے مین گیٹ اور تمام ونڈو گرِلز بنوائی
+            ہیں۔ کام کا معیار بہت اعلیٰ ہے اور قیمت بھی مناسب تھی۔ وقت پر ڈیلیوری ملی۔ بہت شکریہ!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: rgba(201,168,76,0.15); color: var(--gold-dark);">م ا</div>
+            <div>
+              <div class="author-name">محمد اعجاز</div>
+              <div class="author-city">📍 خرانوالہ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">بہت عمدہ کاریگری ہے۔ میں نے اپنی دکان کے لیے رولنگ شٹر بنوایا۔ ڈیزائن خوبصورت ہے
+            اور مواد مضبوط۔ 2 سال ہو گئے، کوئی مسئلہ نہیں آیا۔ سب کو سفارش کرتا ہوں!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: rgba(37,99,235,0.12); color: #1e40af;">ر خ</div>
+            <div>
+              <div class="author-name">رانا خورشید</div>
+              <div class="author-city">📍 فیصل آباد</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">سیڑھی ریلنگ اور بالکونی کی گرِل بنوائی۔ کاریگر بہت محنتی اور تجربہ کار ہیں۔ کام
+            اتنا صاف ستھرا ہے کہ محلے والے بھی تعریف کرتے ہیں۔ اللہ برکت دے!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: rgba(5,150,105,0.12); color: #065f46;">ح ن</div>
+            <div>
+              <div class="author-name">حافظ نعمان</div>
+              <div class="author-city">📍 چک 69 آر بی</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">واٹس ایپ پر رابطہ کیا، فوری جواب ملا۔ گیٹ کا ڈیزائن خود انہوں نے تجویز کیا جو بہت
+            اچھا نکلا۔ کسٹم کام کرتے ہیں جو بڑی بات ہے۔ دوبارہ ضرور آؤں گا۔</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: rgba(124,58,237,0.12); color: #6d28d9;">ع ص</div>
+            <div>
+              <div class="author-name">عمر صدیق</div>
+              <div class="author-city">📍 جڑانوالہ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">بہت پرانے کسٹمر ہیں ہم۔ 1990 سے آج تک یہی جگہ آتے ہیں۔ قیمتیں مناسب ہیں، کام پکا
+            ہے۔ میرے بیٹے کے گھر کا گیٹ بھی یہاں سے بنوایا۔</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: rgba(239,68,68,0.1); color: #b91c1c;">م ر</div>
+            <div>
+              <div class="author-name">ملک رفیق</div>
+              <div class="author-city">📍 گھسیت پورہ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">بہت خوبصورت آئرن ورک کرتے ہیں۔ میں نے فیکٹری کے لیے بڑا گیٹ بنوایا، سب نے تعریف
+            کی۔ کام جلدی ہوا اور مزدوری بھی ٹھیک تھی۔ شکریہ ماشاءاللہ اسٹور!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: rgba(201,168,76,0.15); color: var(--gold-dark);">ط م</div>
+            <div>
+              <div class="author-name">طارق محمود</div>
+              <div class="author-city">📍 خرانوالہ انڈسٹریل</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS -->
+  <section id="hours" class="hours-section">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom: 3rem;">
+        <div class="section-tag">🕐 اوقات کار</div>
+        <h2 class="section-title">دکان کھلنے کے اوقات</h2>
+        <p class="section-desc">ہم ہفتے میں 7 دن آپ کی خدمت کے لیے حاضر ہیں</p>
+      </div>
+      <div class="hours-wrapper">
+        <div class="hours-table-wrap fade-in">
+          <div class="hours-header"><span style="font-size:20px;">🗓️</span><span class="hours-header-text">ہفتہ وار
+              اوقات</span></div>
+          <div class="hours-row"><span class="day-name">اتوار</span><span class="time-slot">7:00 AM – 10:00
+              PM</span><span class="badge-open">کھلا</span></div>
+          <div class="hours-row"><span class="day-name">پیر</span><span class="time-slot">7:00 AM – 10:00 PM</span><span
+              class="badge-open">کھلا</span></div>
+          <div class="hours-row"><span class="day-name">منگل</span><span class="time-slot">7:00 AM – 10:00
+              PM</span><span class="badge-open">کھلا</span></div>
+          <div class="hours-row"><span class="day-name">بدھ</span><span class="time-slot">7:00 AM – 10:00 PM</span><span
+              class="badge-open">کھلا</span></div>
+          <div class="hours-row"><span class="day-name">جمعرات</span><span class="time-slot">7:00 AM – 10:00
+              PM</span><span class="badge-open">کھلا</span></div>
+          <div class="hours-row"><span class="day-name">جمعہ</span><span class="time-slot">9:00 AM – 5:00 PM</span><span
+              class="badge-friday">مختصر اوقات</span></div>
+          <div class="hours-row"><span class="day-name">ہفتہ</span><span class="time-slot">7:00 AM – 10:00
+              PM</span><span class="badge-open">کھلا</span></div>
+        </div>
+        <div class="info-cards fade-in">
+          <div class="info-card">
+            <div class="info-card-icon">📍</div>
+            <div>
+              <div class="info-card-label">Address</div>
+              <div class="info-card-value" style="font-family: var(--font-urdu); direction: rtl; font-size: 0.9rem;">چک
+                69 آر بی گھسیت پورہ، خرانوالہ، پاکستان</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">📞</div>
+            <div>
+              <div class="info-card-label">Phone</div>
+              <div class="info-card-value"><a href="tel:03026050782">0302 6050782</a></div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">🛵</div>
+            <div>
+              <div class="info-card-label">Services</div>
+              <div class="info-card-value" style="font-family: var(--font-urdu); direction: rtl;">ڈیلیوری، ان-اسٹور
+                شاپنگ، آن-سائٹ سروس</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">💵</div>
+            <div>
+              <div class="info-card-label">Payment</div>
+              <div class="info-card-value" style="font-family: var(--font-urdu); direction: rtl;">صرف نقد ادائیگی</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="location" class="map-section">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-tag">📍 ہمارا مقام</div>
+        <h2 class="section-title" style="color:#fff;">ہمیں یہاں تلاش کریں</h2>
+        <p class="section-desc">چک 69 آر بی گھسیت پورہ، خرانوالہ، پاکستان</p>
+      </div>
+      <div class="map-container fade-in">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d162.75651159761543!2d73.35182032079429!3d31.51649802172756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39227150c9b367c1%3A0x90142eb7b16bb420!2z2YXYp9i02KfYodin2YTZhNuBINqv24zZuSDYp9uM2YbaiCDar9ix2ZDZhCDYp9iz2bnZiNix!5e1!3m2!1sen!2s!4v1779607281135!5m2!1sen!2s"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div style="text-align: center;" class="fade-in">
+        <div class="section-tag" style="justify-content: center; display: inline-flex;">📬 رابطہ کریں</div>
+        <h2 class="section-title" style="margin-top: 0.5rem;">آج ہی آرڈر دیں</h2>
+        <p class="section-desc" style="margin: 0 auto;">ہم سے رابطہ کریں اور اپنی ضرورت بتائیں — ہم آپ کی خدمت کے لیے
+          حاضر ہیں</p>
+      </div>
+      <div class="contact-grid" style="margin-top: 3rem;">
+        <div class="contact-card fade-in">
+          <div class="contact-card-icon" style="background: rgba(26,35,50,0.1);">📞</div>
+          <div class="contact-title">فون نمبر</div>
+          <div class="contact-value">0302 6050782</div><a href="tel:03026050782"
+            class="contact-btn btn-phone-contact">ابھی کال کریں</a>
+        </div>
+        <div class="contact-card fade-in">
+          <div class="contact-card-icon" style="background: rgba(37,211,102,0.12);">💬</div>
+          <div class="contact-title">واٹس ایپ</div>
+          <div class="contact-value">+92 302 6050782</div><a
+            href="https://wa.me/923026050782?text=السلام علیکم، مجھے آپ کی سروس کے بارے میں معلومات چاہیے"
+            target="_blank" class="contact-btn btn-wa-contact">واٹس ایپ پر میسج</a>
+        </div>
+        <div class="contact-card fade-in">
+          <div class="contact-card-icon" style="background: rgba(24,119,242,0.1);">👤</div>
+          <div class="contact-title">فیس بک</div>
+          <div class="contact-value urdu-val">ہمارا فیس بک پیج</div><a
+            href="https://www.facebook.com/profile.php?id=100071499708375" target="_blank"
+            class="contact-btn btn-fb-contact">فیس بک پر دیکھیں</a>
+        </div>
+        <div class="contact-card fade-in">
+          <div class="contact-card-icon" style="background: rgba(201,168,76,0.12);">📍</div>
+          <div class="contact-title">پتہ</div>
+          <div class="contact-value urdu-val">چک 69 آر بی گھسیت پورہ<br>خرانوالہ، پاکستان</div><a
+            href="https://maps.google.com/?q=31.51649802172756,73.35182032079429" target="_blank" class="contact-btn"
+            style="background: rgba(201,168,76,0.1); color: var(--gold-dark);">گوگل میپس میں دیکھیں</a>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem; background: #1A2332; border-radius: 20px; padding: 3rem 2rem; text-align: center;"
+        class="fade-in">
+        <h3 style="font-family: var(--font-urdu); font-size: 1.5rem; color: var(--gold-light); margin-bottom: 0.75rem;">
+          ایک بار خدمت کا موقع ضرور دیں</h3>
+        <p
+          style="font-family: var(--font-urdu); color: rgba(255,255,255,0.6); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.8;">
+          مناسب قیمت، وقت کی پابندی اور معیاری کام ہماری پہچان ہے</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/923026050782?text=السلام علیکم، مجھے قیمت کا تخمینہ چاہیے" target="_blank"
+            class="btn-wa">💬 قیمت پوچھیں</a>
+          <a href="tel:03026050782" class="btn-primary">📞 0302 6050782</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">ماشاءاللہ گیٹ اینڈ گرِل اسٹور</div>
+    <div class="footer-tagline">معیار، اعتماد اور خوبصورتی — 1990 سے</div>
+    <div class="footer-divider"></div>
+    <div class="footer-links">
+      <a href="#about">ہمارے بارے میں</a>
+      <a href="#services">خدمات</a>
+      <a href="#gallery">گیلری</a>
+      <a href="#reviews">ریویوز</a>
+      <a href="#hours">اوقات کار</a>
+      <a href="#contact">رابطہ</a>
+    </div>
+    <div class="footer-copy">© 2025 Mashallah Gate & Grill Store — Chak 69 RB Ghasitpura, Khurrianwala, Pakistan</div>
+  </footer>
+
+  <style>
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+      }
+    }
+  </style>
+
+  <script>
+    // THEME TOGGLE
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('theme-icon').textContent = isDark ? '🌙' : '☀️';
+      document.getElementById('theme-label').textContent = isDark ? 'DARK' : 'LIGHT';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    if (savedTheme === 'light') {
+      document.getElementById('theme-icon').textContent = '🌙';
+      document.getElementById('theme-label').textContent = 'DARK';
+    }
+
+    // MOBILE MENU
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    document.addEventListener('click', function (e) {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+
+    // GALLERY FILTER
+    function filterGallery(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        if (cat === 'all' || item.dataset.cat === cat) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // LIGHTBOX
+    function openLightbox(item) {
+      const img = item.querySelector('img');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // SCROLL ANIMATIONS
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // HIGHLIGHT TODAY
+    const days = ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'];
+    const today = new Date().getDay();
+    document.querySelectorAll('.hours-row').forEach(row => {
+      const dayEl = row.querySelector('.day-name');
+      if (dayEl && dayEl.textContent.trim() === days[today]) {
+        row.classList.add('today');
+      }
+    });
+  </script>
+</body>
+
+</html>
